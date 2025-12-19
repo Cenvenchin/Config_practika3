@@ -1,0 +1,7 @@
+instructions:
+  - opcode: bswap
+    result_addr: 82
+    result_offset: 796
+    operand_offset: 735
+    operand_addr: 5
+

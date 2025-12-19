@@ -1,0 +1,115 @@
+# Пример программы для поэлементного выполнения bswap над вектором длины 6
+instructions:
+  # Загружаем базовые адреса в регистры
+  - opcode: load_const
+    address: 0
+    constant: 0x1000  # Базовый адрес исходного вектора
+  - opcode: load_const
+    address: 1
+    constant: 0x2000  # Базовый адрес результирующего вектора
+  
+  # Загружаем значения в исходный вектор (пример данных)
+  # Используем регистр 2 как временный указатель
+  - opcode: load_const
+    address: 2
+    constant: 0x1000
+  - opcode: load_const
+    address: 10
+    constant: 0x12345678
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  - opcode: load_const
+    address: 2
+    constant: 0x1004
+  - opcode: load_const
+    address: 10
+    constant: 0xABCDEF00
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  - opcode: load_const
+    address: 2
+    constant: 0x1008
+  - opcode: load_const
+    address: 10
+    constant: 0x11223344
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  - opcode: load_const
+    address: 2
+    constant: 0x100C
+  - opcode: load_const
+    address: 10
+    constant: 0x55667788
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  - opcode: load_const
+    address: 2
+    constant: 0x1010
+  - opcode: load_const
+    address: 10
+    constant: 0x99AABBCC
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  - opcode: load_const
+    address: 2
+    constant: 0x1014
+  - opcode: load_const
+    address: 10
+    constant: 0xDDEEFF00
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  # Выполняем bswap для каждого элемента вектора (6 элементов)
+  # Элемент 0
+  - opcode: bswap
+    result_addr: 1
+    result_offset: 0
+    operand_offset: 0
+    operand_addr: 0
+  
+  # Элемент 1
+  - opcode: bswap
+    result_addr: 1
+    result_offset: 4
+    operand_offset: 4
+    operand_addr: 0
+  
+  # Элемент 2
+  - opcode: bswap
+    result_addr: 1
+    result_offset: 8
+    operand_offset: 8
+    operand_addr: 0
+  
+  # Элемент 3
+  - opcode: bswap
+    result_addr: 1
+    result_offset: 12
+    operand_offset: 12
+    operand_addr: 0
+  
+  # Элемент 4
+  - opcode: bswap
+    result_addr: 1
+    result_offset: 16
+    operand_offset: 16
+    operand_addr: 0
+  
+  # Элемент 5
+  - opcode: bswap
+    result_addr: 1
+    result_offset: 20
+    operand_offset: 20
+    operand_addr: 0
+

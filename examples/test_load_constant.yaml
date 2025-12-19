@@ -1,0 +1,5 @@
+instructions:
+  - opcode: load_const
+    address: 124
+    constant: 828
+

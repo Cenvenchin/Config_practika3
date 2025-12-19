@@ -1,0 +1,84 @@
+# Программа для копирования массива с одного адреса на другой
+instructions:
+  # Загружаем адреса
+  - opcode: load_const
+    address: 0
+    constant: 0x1000  # Адрес источника
+  - opcode: load_const
+    address: 1
+    constant: 0x2000  # Адрес назначения
+  
+  # Загружаем тестовые данные в источник (используем регистр 2 как временный указатель)
+  - opcode: load_const
+    address: 2
+    constant: 0x1000  # Указатель на текущий элемент источника
+  - opcode: load_const
+    address: 10
+    constant: 0x11111111
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  - opcode: load_const
+    address: 2
+    constant: 0x1004  # Следующий элемент
+  - opcode: load_const
+    address: 10
+    constant: 0x22222222
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  - opcode: load_const
+    address: 2
+    constant: 0x1008  # Следующий элемент
+  - opcode: load_const
+    address: 10
+    constant: 0x33333333
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 2
+  
+  # Копируем массив (3 элемента)
+  # Элемент 0
+  - opcode: load_const
+    address: 2
+    constant: 0x1000
+  - opcode: load_const
+    address: 3
+    constant: 0x2000
+  - opcode: read_mem
+    result_addr: 10
+    source_addr: 2
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 3
+  
+  # Элемент 1
+  - opcode: load_const
+    address: 2
+    constant: 0x1004
+  - opcode: load_const
+    address: 3
+    constant: 0x2004
+  - opcode: read_mem
+    result_addr: 10
+    source_addr: 2
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 3
+  
+  # Элемент 2
+  - opcode: load_const
+    address: 2
+    constant: 0x1008
+  - opcode: load_const
+    address: 3
+    constant: 0x2008
+  - opcode: read_mem
+    result_addr: 10
+    source_addr: 2
+  - opcode: write_mem
+    source_addr: 10
+    result_addr: 3
+

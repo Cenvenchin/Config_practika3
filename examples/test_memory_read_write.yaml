@@ -1,0 +1,8 @@
+instructions:
+  - opcode: read_mem
+    result_addr: 116
+    source_addr: 68
+  - opcode: write_mem
+    source_addr: 56
+    result_addr: 49
+
